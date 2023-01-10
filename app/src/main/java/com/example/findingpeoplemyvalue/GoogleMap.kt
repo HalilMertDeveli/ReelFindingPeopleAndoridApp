@@ -1,11 +1,14 @@
 package com.example.findingpeoplemyvalue
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -16,6 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.findingpeoplemyvalue.databinding.ActivityGoogleMapBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class GoogleMap : AppCompatActivity(), OnMapReadyCallback {
 
@@ -23,6 +27,7 @@ class GoogleMap : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityGoogleMapBinding
     private lateinit var locationManager : LocationManager
     private lateinit var locationListener: LocationListener
+    private  lateinit var authInstance :FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,35 @@ class GoogleMap : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        authInstance = FirebaseAuth.getInstance()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = getMenuInflater()
+        menuInflater.inflate(R.menu.there_point_options,menu)
+
+
+
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==R.id.findingFriendsLocation){
+            val intent = Intent(applicationContext,FindFriends::class.java)
+            startActivity(intent)
+
+        }
+        if (item.itemId == R.id.logOut){
+            authInstance.signOut()
+            val intent = Intent(applicationContext,MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        return super.onOptionsItemSelected(item)
     }
 
 

@@ -16,12 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         authInstance= FirebaseAuth.getInstance()
+        val activeUser = authInstance.currentUser
 
-
+        if (activeUser !=null){
+            val intent = Intent(applicationContext,GoogleMap::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun signUp(view: View){
