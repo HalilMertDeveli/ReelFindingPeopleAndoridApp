@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+repositories {
+    //mavenLocal()
+    //mavenCentral()
+}
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+
+
+android {
+    namespace 'com.example.findingpeoplemyvalue'
+    compileSdk 33
+    buildToolsVersion '30.0.3'
+
+    defaultConfig {
+        applicationId "com.example.findingpeoplemyvalue"
+        minSdk 21
+        targetSdk 33
+        multiDexEnabled true
+        versionCode 1
+        vectorDrawables.useSupportLibrary = true
+        ndk {
+            // On x86 devices that run Android API 23 or above, if the application is targeted with API 23 or
+            // above, FFmpeg lib might lead to runtime crashes or warnings.
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "3g"
+    }
+    packagingOptions {
+        jniLibs {
+            keepDebugSymbols += ['*/*/libdjivideo.so', '*/*/libSDKRelativeJNI.so', '*/*/libFlyForbid.so', '*/*/libduml_vision_bokeh.so', '*/*/libyuv2.so', '*/*/libGroudStation.so', '*/*/libFRCorkscrew.so', '*/*/libUpgradeVerify.so', '*/*/libFR.so', '*/*/libDJIFlySafeCore.so', '*/*/libdjifs_jni.so', '*/*/libsfjni.so', '*/*/libDJICommonJNI.so', '*/*/libDJICSDKCommon.so', '*/*/libDJIUpgradeCore.so', '*/*/libDJIUpgradeJNI.so', '*/*/libDJIWaypointV2Core.so', '*/*/libAMapSDK_MAP_v6_9_2.so', '*/*/libDJIMOP.so', '*/*/libDJISDKLOGJNI.so']
+            pickFirsts += ['lib/*/libstlport_shared.so', 'lib/*/libRoadLineRebuildAPI.so', 'lib/*/libGNaviUtils.so', 'lib/*/libGNaviMapex.so', 'lib/*/libGNaviData.so', 'lib/*/libGNaviMap.so', 'lib/*/libGNaviSearch.so', 'lib/*/libDJIFlySafeCore.so', 'lib/*/libdjifs_jni.so', 'lib/*/libsfjni.so']
+        }
+        resources {
+            excludes += ['META-INF/proguard/okhttp3.pro', 'META-INF/rxjava.properties', 'assets/location_map_gps_locked.png', 'assets/location_map_gps_3d.png']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        abortOnError false
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+
+}
+/*
+implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+*
+*/

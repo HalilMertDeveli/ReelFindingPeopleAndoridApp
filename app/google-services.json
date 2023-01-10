@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "209675960381",
+    "project_id": "my-value-android",
+    "storage_bucket": "my-value-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209675960381:android:be5bf1326caab217d0ea54",
+        "android_client_info": {
+          "package_name": "com.example.findingpeoplemyvalue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209675960381-o08dbpcont8pt3dunu3n0ohk0aclteqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPWjgjqF38tsQth41RCKPKsf0FzaLfSJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209675960381-o08dbpcont8pt3dunu3n0ohk0aclteqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
