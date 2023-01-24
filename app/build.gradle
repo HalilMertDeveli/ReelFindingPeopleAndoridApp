@@ -16,13 +16,13 @@ apply plugin: 'com.google.gms.google-services'
 
 android {
     namespace 'com.example.findingpeoplemyvalue'
-    compileSdk 31
-    buildToolsVersion '33.0.0'
+    compileSdk 33
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.example.findingpeoplemyvalue"
         minSdk 21
-        targetSdk 31
+        targetSdk 33
         multiDexEnabled true
         versionCode 1
         vectorDrawables.useSupportLibrary = true

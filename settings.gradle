@@ -13,3 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Finding People My Value"
+include ':app'
