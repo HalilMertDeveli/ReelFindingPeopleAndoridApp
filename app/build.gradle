@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-android-extensions'
 }
 
 repositories {
@@ -13,11 +13,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 
-
 android {
     namespace 'com.example.findingpeoplemyvalue'
     compileSdk 33
-    buildToolsVersion '30.0.3'
+
+    buildFeatures{
+        viewBinding=true
+    }
+
 
     defaultConfig {
         applicationId "com.example.findingpeoplemyvalue"
@@ -67,12 +70,18 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
+
 dependencies {
+
+
+
+
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
@@ -85,6 +94,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
+
+
 
 
 }
